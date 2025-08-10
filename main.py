@@ -60,7 +60,7 @@ def get_today_last(chat_id: int):
     conn.close()
     return row  # (emoji, comment, dt) или None
 
-def get_daily_scores(chat_id: int, days: int = 7):
+'''def get_daily_scores(chat_id: int, days: int = 7):
     # Возвращает списки дат (str) и средних баллов (float|nan) за каждый день
     labels, values = [], []
     conn = get_db()
@@ -96,7 +96,7 @@ def plot_chart(labels, values):
     buf.seek(0)
     bot.send_document(buf)
     return buf
-    
+    '''
 
 #Команды
 HELP_TEXT = (
@@ -149,10 +149,10 @@ def mess(message):
         t = datetime.fromisoformat(dt).strftime("%H:%M")
         suffix = f" — {comment}" if comment else ""
         bot.reply_to(message, f"Сегодня в {t}: {emoji}{suffix}")
-    elif message.text.lower() == '/diagram':
+    '''elif message.text.lower() == '/diagram':
         labels, values = get_daily_scores(message.chat.id, days=7)
         buf = plot_chart(labels, values)
-        bot.send_photo(message.chat.id, buf, caption="Неделя настроения (1 — грустно, 5 — отлично)")
+        bot.send_photo(message.chat.id, buf, caption="Неделя настроения (1 — грустно, 5 — отлично)")'''
 
 
 # Фолбэк: если пользователь просто прислал эмодзи из набора
