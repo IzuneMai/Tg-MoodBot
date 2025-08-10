@@ -3,11 +3,15 @@ import sqlite3
 from datetime import datetime, timedelta
 from io import BytesIO
 import math
+from dotenv import load_dotenv
 
 import matplotlib.pyplot as plt
 import telebot
 
-bot = telebot.TeleBot('8495023692:AAGYNbqOVCWnizEmU2h3onC0elJxSRTIrAI')
+load_dotenv(override=True)
+TELEGRAM_TOKEN=str(os.environ.get('TELEGRAM_TOKEN'))
+                   
+bot = telebot.TeleBot(TELEGRAM_TOKEN)
 
 #База данных
 
